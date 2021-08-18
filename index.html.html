@@ -1,0 +1,167 @@
+<html>
+<head>
+<meta charset='utf-8'>
+<style>
+  #mld .relation { font-variant: small-caps; font-weight: bold }
+  #mld .primary { text-decoration: underline }
+  #mld .foreign { font-style: oblique }
+  #mld .normal { }
+</style>
+</head>
+<body>
+<div id='mld'>
+<div>
+  <span class='relation'>POMPE</span> (
+    <span class='primary'>id_pmp</span>,
+    <span class='normal'>libelle</span>,
+    <span class='normal'>status</span>
+  )
+</div>
+<div>
+  <span class='relation'>CREDIT</span> (
+    <span class='primary'>id_crdt</span>,
+    <span class='normal'>libelle</span>,
+    <span class='normal'>type</span>,
+    <span class='normal'>montant</span>,
+    <span class='normal'>date</span>,
+    <span class='foreign'>id_grp</span>,
+    <span class='foreign'>id_grt</span>
+  )
+</div>
+<div>
+  <span class='relation'>CLIENT</span> (
+    <span class='primary'>id_clt</span>,
+    <span class='normal'>nom_prenom</span>,
+    <span class='normal'>email</span>,
+    <span class='normal'>contact</span>,
+    <span class='normal'>adresse</span>,
+    <span class='normal'>type</span>,
+    <span class='foreign'>id_crdt</span>,
+    <span class='foreign'>id_remb</span>
+  )
+</div>
+<div>
+  <span class='relation'>GROUP</span> (
+    <span class='primary'>id_grp</span>,
+    <span class='normal'>name</span>,
+    <span class='normal'>adresse</span>,
+    <span class='foreign'>id_stat</span>
+  )
+</div>
+<div>
+  <span class='relation'>REMBOURSEMENT</span> (
+    <span class='primary'>id_remb</span>,
+    <span class='normal'>libelle</span>,
+    <span class='normal'>montant</span>,
+    <span class='normal'>date</span>
+  )
+</div>
+<div>
+  <span class='relation'>CUVE</span> (
+    <span class='primary'>id_cuve</span>,
+    <span class='normal'>capacite</span>,
+    <span class='normal'>status</span>,
+    <span class='foreign'>id_pmp</span>
+  )
+</div>
+<div>
+  <span class='relation'>STATION</span> (
+    <span class='primary'>id_stat</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>adresse</span>,
+    <span class='normal'>telephone</span>,
+    <span class='normal'>type_payement</span>,
+    <span class='normal'>objectif</span>,
+    <span class='normal'>besoin</span>,
+    <span class='normal'>status</span>,
+    <span class='foreign'>id_pmpte</span>,
+    <span class='foreign'>id_cuve</span>
+  )
+</div>
+<div>
+  <span class='relation'>GERANT</span> (
+    <span class='primary'>id_grt</span>,
+    <span class='normal'>prenom</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>adresse</span>,
+    <span class='normal'>telephone</span>,
+    <span class='normal'>mail</span>,
+    <span class='normal'>login</span>,
+    <span class='foreign'>id_stat</span>
+  )
+</div>
+<div>
+  <span class='relation'>COMMANDE</span> (
+    <span class='primary'>id_cmd</span>,
+    <span class='normal'>libelle</span>,
+    <span class='normal'>date</span>,
+    <span class='normal'></span>,
+    <span class='foreign'>id_grt</span>
+  )
+</div>
+<div>
+  <span class='relation'>PRODUIT</span> (
+    <span class='primary'>id_prdt</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>reference</span>,
+    <span class='normal'>prix</span>,
+    <span class='foreign'>id_cuve</span>
+  )
+</div>
+<div>
+  <span class='relation'>POMPISTE</span> (
+    <span class='primary'>id_pmpte</span>,
+    <span class='normal'>prenom</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>adresse</span>,
+    <span class='normal'>telephone</span>,
+    <span class='normal'>login</span>,
+    <span class='normal'>status</span>
+  )
+</div>
+<div>
+  <span class='relation'>VERSEMENT</span> (
+    <span class='primary'>id_vers</span>,
+    <span class='normal'>libelle</span>,
+    <span class='normal'>montant</span>,
+    <span class='normal'>date</span>,
+    <span class='normal'></span>,
+    <span class='foreign'>id_grt</span>,
+    <span class='foreign'>id_banq</span>
+  )
+</div>
+<div>
+  <span class='relation'>CONCERNER</span> (
+    <span class='foreign primary'>id_prdt</span>,
+    <span class='foreign primary'>id_vte</span>
+  )
+</div>
+<div>
+  <span class='relation'>VENTE</span> (
+    <span class='primary'>id_vte</span>,
+    <span class='normal'>quantité</span>,
+    <span class='normal'>date</span>,
+    <span class='normal'>montant</span>,
+    <span class='foreign'>id_pmpte</span>
+  )
+</div>
+<div>
+  <span class='relation'>BANQUE</span> (
+    <span class='primary'>id_banq</span>,
+    <span class='normal'>libelle</span>,
+    <span class='normal'>solde</span>
+  )
+</div>
+<div>
+  <span class='relation'>LIVRAISON</span> (
+    <span class='primary'>id_livr</span>,
+    <span class='normal'>date</span>,
+    <span class='normal'>quantité</span>,
+    <span class='normal'>numero_bl</span>,
+    <span class='normal'>nom_prenom_livreur</span>,
+    <span class='foreign'>id_cmd</span>
+  )
+</div>
+</div>
+</body>
+</html>
